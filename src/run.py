@@ -52,10 +52,10 @@ def song(url):
     default_filename = vids[vnum].default_filename
     new_filename = vids[vnum].default_filename[:-4]+'mp3'
     #print default_filename,new_filename
-    os.rename(default_filename, new_filename)
+    #os.rename(default_filename, new_filename)
     now2 = time.time()
     print(now2-now)
-    return send_file(new_filename,
+    return send_file(default_filename,
                      attachment_filename=new_filename,
                      as_attachment=True)
 
@@ -71,7 +71,4 @@ def root():
     return app.send_static_file('index.html')
 
 if __name__ == "__main__":
-    if DEVELOPMENT:
-        url = "http://localhost:8080"
-        threading.Timer(1.25, lambda: webbrowser.open(url) ).start()
     app.run(host='0.0.0.0', port=2525, debug=True)

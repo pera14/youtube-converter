@@ -12,7 +12,7 @@ from flask import send_file
 from pytube import YouTube
 import os
 import subprocess
-
+import time
 
 DEVELOPMENT = False
 if DEVELOPMENT:
@@ -37,13 +37,14 @@ def song(url):
     print url
     yt.streams.filter(subtype='mp3').first().download()
     name = yt.streams.first().default_filename'''
+    now = time.time()
     yt = YouTube('www.youtube.com/watch?v=' + url)
 
     vids= yt.streams.filter(only_audio=True,subtype='mp4').all()
     for i in range(len(vids)):
         print(i,'. ',vids[i])
 
-    vnum = int(input("Enter vid num: "))
+    vnum = 0
 
     parent_dir = r"C:\Users\nsope\Downloads"
     vids[vnum].download()
@@ -51,9 +52,9 @@ def song(url):
     new_filename = vids[vnum].default_filename[:-4]+'.mp3'
     print default_filename,new_filename
     os.rename(default_filename, new_filename)
-
+    now2 = time.time()
     print('done')
-    return 'done'
+    return now2-now
 
 @app.route('/api/playlist/<url>', methods=['GET'])
 def playlist(url):

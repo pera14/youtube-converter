@@ -9,7 +9,7 @@ import json
 
 from time import gmtime, strftime
 from flask import send_file
- from pytube import YouTube
+from pytube import YouTube
 
 
 DEVELOPMENT = False
@@ -30,10 +30,20 @@ def static_file(path):
 
 
 @app.route('/api/song/<url>', methods=['GET'])
-def izvestaj(url):
+def song(url):
+    yt = YouTube('www.youtube.com/watch?v=' + url)
+    print url
+    yt.streams.first().download()
+    name = yt.streams.first().default_filename
 
-    return ret
+    return name
 
+@app.route('/api/playlist/<url>', methods=['GET'])
+def playlist(url):
+    yt = YouTube(url)
+    yt.streams.first().download()
+    name = yt.streams.first().default_filename
+    return name
 
 @app.route('/')
 def root():

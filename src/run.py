@@ -33,16 +33,28 @@ def static_file(path):
 
 @app.route('/api/song/<url>', methods=['GET'])
 def song(url):
+    '''yt = YouTube('www.youtube.com/watch?v=' + url)
+    print url
+    yt.streams.filter(subtype='mp3').first().download()
+    name = yt.streams.first().default_filename'''
     now = time.time()
     yt = YouTube('www.youtube.com/watch?v=' + url)
 
     vids= yt.streams.filter(only_audio=True,subtype="webm").all()
+    #vids= yt.streams.filter().all()
+    for i in range(len(vids)):
+        print(i,'. ',vids[i])
+
+    #vnum = int(input("Unesite broj: "))
     vnum=1
+    parent_dir = r"C:\Users\nsope\Downloads"
     vids[vnum].download()
     default_filename = vids[vnum].default_filename
     new_filename = vids[vnum].default_filename[:-4]+'mp3'
+    #print default_filename,new_filename
     os.rename(default_filename, new_filename)
     now2 = time.time()
+    print(now2-now)
     return send_file(new_filename,
                      attachment_filename=new_filename,
                      as_attachment=True)

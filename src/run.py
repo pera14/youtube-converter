@@ -54,7 +54,7 @@ def song(url):
     os.rename(default_filename, new_filename)
     now2 = time.time()
     print('done')
-    return now2-now
+    return ""+now2-now
 
 @app.route('/api/playlist/<url>', methods=['GET'])
 def playlist(url):

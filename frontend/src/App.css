@@ -1,4 +1,9 @@
 /* LAYOUT */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Roboto, Segoe UI, 'Helvetica Neue', Helvetica;
+}
 
 .wrapper {
   height: 100vh;
@@ -83,4 +88,3 @@ input {
 input.danger {
   border: 1px solid #d9534f;
 }
-

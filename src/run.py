@@ -48,7 +48,7 @@ def song(url):
     #vnum = int(input("Unesite broj: "))
     vnum=1
     parent_dir = r"C:\Users\nsope\Downloads"
-    vids[vnum].download()
+    print vids[vnum]
     default_filename = vids[vnum].default_filename
     new_filename = vids[vnum].default_filename[:-4]+'mp3'
     #print default_filename,new_filename
@@ -61,7 +61,7 @@ def song(url):
 
 @app.route('/api/playlist/<url>', methods=['GET'])
 def playlist(url):
-    
+
     yt = YouTube(url)
     yt.streams.first().download()
     name = yt.streams.first().default_filename

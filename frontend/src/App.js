@@ -35,7 +35,7 @@ class App extends Component {
     const videoCode = getURLParameters(this.state.videoURL).v;
     console.log(`Video kod: ${videoCode}`);
     console.warn('Pozivamo GET, error ce biti verovatno dok ne sredimo kako da prihvatam fajl nazad.');
-    fetch(`localhost:2525/api/song/${videoCode}`)
+    fetch(`http://localhost:2525/api/song/${videoCode}`)
       .then(() => console.log('sent!'))
       .catch(() => console.log('err'));
     event.preventDefault();

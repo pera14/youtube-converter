@@ -1,0 +1,66 @@
+/* LAYOUT */
+
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 1fr) 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas:
+    "... header ..."
+    "... videoInput ..."
+    "... videoDetails ...";
+  justify-items: center;
+  align-items: center;
+}
+
+.header {
+  grid-area: header;
+
+  text-align: center;
+}
+
+.videoInput {
+  grid-area: videoInput;
+}
+
+/* DOWNLOAD BUTTON */
+
+button.btn {
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #8385aa;
+  white-space: nowrap;
+  border: 1px solid #c8cbf2;
+  border-radius: 0.2rem;
+  vertical-align: middle;
+  line-height: 2;
+  padding: 0 0.5rem;
+  margin-right: 0.25rem;
+  transition: all 0.1s ease-out;
+  outline: 0;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+button.btn:hover {
+  background: #8385aa;
+  border-color: #8385aa;
+  color: white;
+}
+
+.feather {
+    vertical-align: middle;
+    margin-right: 0.25rem;
+    position: relative;
+    top: -2px;
+    width: 18px;
+    height: 18px;
+}
+
+
+

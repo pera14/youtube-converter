@@ -26,7 +26,18 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    alert('ytURL: ' + this.state.videoURL);
+    const getURLParameters = url =>
+      (url.match(/([^?=&]+)(=([^&]*))/g) || []).reduce(
+        (a, v) => ((a[v.slice(0, v.indexOf('='))] = v.slice(v.indexOf('=') + 1)), a),
+        {}
+    );
+
+    const videoCode = getURLParameters(this.state.videoURL).v;
+    console.log(`Video kod: ${videoCode}`);
+    console.warn('Pozivamo GET, error ce biti verovatno dok ne sredimo kako da prihvatam fajl nazad.');
+    fetch(`http://localhost:2525/api/song/${videoCode}`)
+      .then(() => console.log('sent!'))
+      .catch(() => console.log('err'));
     event.preventDefault();
   }
 
@@ -39,11 +50,12 @@ class App extends Component {
         </div>
         <div className="videoInput">
           <input className={this.state.isValidURL ? '' : 'danger'} onChange={this.handleChange}/>
-          <button className="btn">
+          <button className="btn" onClick={this.handleSubmit}>
             <Download className="feather" />
             download
           </button>
         </div>
+
       </div>
     );
   }

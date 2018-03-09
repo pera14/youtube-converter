@@ -52,7 +52,7 @@ def song(url):
     default_filename = vids[vnum].default_filename
     new_filename = vids[vnum].default_filename[:-4]+'mp3'
     #print default_filename,new_filename
-    #os.rename(default_filename, new_filename)
+    #os.renme(default_filename, new_filename)
     now2 = time.time()
     print(now2-now)
     return send_file(default_filename,
@@ -61,6 +61,7 @@ def song(url):
 
 @app.route('/api/playlist/<url>', methods=['GET'])
 def playlist(url):
+    
     yt = YouTube(url)
     yt.streams.first().download()
     name = yt.streams.first().default_filename

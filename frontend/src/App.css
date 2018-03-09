@@ -9,8 +9,8 @@
     "... header ..."
     "... videoInput ..."
     "... videoDetails ...";
-  justify-items: center;
-  align-items: center;
+    justify-items: center;
+    align-items: center;
 }
 
 .header {
@@ -63,4 +63,24 @@ button.btn:hover {
 }
 
 
+/* INPUT  */
+input {
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  color: #8385aa;
+  font-size: 0.95rem;
+  border: 1px solid #c8cbf2;
+  border-radius: 0.2rem;
+  vertical-align: middle;
+  line-height: 2;
+  padding: 0 0.5rem;
+  margin-right: 0.5rem;
+  transition: all 0.2s ease-out;
+  outline: 0;
+}
+
+input.danger {
+  border: 1px solid #d9534f;
+}
 
